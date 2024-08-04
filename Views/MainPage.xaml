@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="SwipeCardViewDemo.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:swipe="clr-namespace:Plugin.Maui.SwipeCardView;assembly=Plugin.Maui.SwipeCardView"
+    Shell.NavBarIsVisible="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="7*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <StackLayout
+            Grid.Row="0"
+            Padding="1"
+            Orientation="Horizontal"
+            Spacing="10">
+
+            <Image
+                Margin="10,0,0,0"
+                HeightRequest="35"
+                HorizontalOptions="Start"
+                Source="profile_icon.png"
+                VerticalOptions="Center"
+                WidthRequest="35" />
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Start"
+                Text="kewanglimbu"
+                VerticalOptions="Center" />
+            <Image
+                HeightRequest="30"
+                HorizontalOptions="EndAndExpand"
+                Source="dot_icon.png"
+                VerticalOptions="Center"
+                WidthRequest="30" />
+
+        </StackLayout>
+
+        <swipe:SwipeCardView
+            Grid.Row="1"
+            ItemsSource="{Binding MovieCharacters}"
+            SupportedSwipeDirections="Left, Right"
+            VerticalOptions="FillAndExpand">
+            <swipe:SwipeCardView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="8*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <Image
+                            Grid.Row="0"
+                            Aspect="AspectFill"
+                            HorizontalOptions="Center"
+                            Source="{Binding Image}"
+                            VerticalOptions="Center" />
+
+                        <Label
+                            Grid.Row="1"
+                            BackgroundColor="WhiteSmoke"
+                            FontSize="Title"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding House}"
+                            VerticalTextAlignment="Center" />
+
+                        <StackLayout Grid.Row="2">
+                            <Label
+                                BackgroundColor="WhiteSmoke"
+                                FontSize="16"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Name}"
+                                VerticalTextAlignment="Center" />
+                            <Label
+                                BackgroundColor="WhiteSmoke"
+                                FontSize="10"
+                                HorizontalTextAlignment="Center"
+                                Text="{Binding Ancestry}"
+                                TextTransform="Uppercase"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
+
+                    </Grid>
+                </DataTemplate>
+            </swipe:SwipeCardView.ItemTemplate>
+        </swipe:SwipeCardView>
+        <StackLayout Grid.Row="2">
+            <Label
+                BackgroundColor="LightGoldenrodYellow"
+                FontSize="12"
+                HorizontalTextAlignment="Center"
+                Text="Please continue swiping the image to see more..."
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Grid>
+</ContentPage>
