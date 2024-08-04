@@ -25,6 +25,7 @@ namespace SwipeCardViewDemo.ViewModels
         public MovieCharacterViewModel(IMovieCharacterService movieCharacterService)
         {
             _movieCharacterService = movieCharacterService;
+            LoadMovieCharacters();
             Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
         }
 
@@ -44,6 +45,7 @@ namespace SwipeCardViewDemo.ViewModels
         {
             if (e.NetworkAccess == NetworkAccess.Internet)
             {
+                await Application.Current.MainPage.DisplayAlert("", "Internet Connection Available.", "Ok");
                 await LoadMovieCharacters();
             }
             else
